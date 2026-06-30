@@ -1,0 +1,21 @@
+<div class="customers-container">
+  <div class="customers-header">
+    <h1>Clientes</h1>
+    <button class="btn-new" (click)="openCreate()">+ Nuevo cliente</button>
+  </div>
+
+  <app-customer-table
+    [customers]="customers()"
+    (edit)="openEdit($event)"
+    (delete)="delete($event)">
+  </app-customer-table>
+
+  @if (showForm()) {
+    <app-customer-form
+      [customer]="selectedCustomer"
+      [isEditing]="isEditing"
+      (save)="save($event)"
+      (cancel)="cancel()">
+    </app-customer-form>
+  }
+</div>
